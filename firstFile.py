@@ -6,10 +6,12 @@
 # multiple assignments works also like in js
 # input() is the same as gets in Ruby
 
+# None is same as null
 
-def fun():
-    name = input("What's your name? ")
-    return("Nice to meet you " + name)
+# position arguments, explicitly set values for parameters by using the = sign
+def fun(a, b, c):
+    return("total is " + str(a + b * c))
 
 
-print(fun())
+print(fun(b=1, a=2, c=3))  # 5
+print(fun(1, 2, 3))  # 7
