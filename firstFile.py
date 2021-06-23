@@ -7,7 +7,7 @@ print(type(9), type("S"), type(3.5), type([1, 2]), type({}))
 # placing a = in between 2 variables assigns both vars to the same object
 # multiple assignments works also like in js
 # input() is the same as gets in Ruby
-
+# len() gives the length of a string or array(list)
 # None is same as null
 
 # position arguments, explicitly set values for parameters by using the = sign
@@ -20,3 +20,9 @@ def fun(a: int, b: int, c: int) -> str:
 
 print(fun(b=1, a=2, c=3))  # 5
 print(fun(1, 2, 3))  # 7
+
+name = "nim"
+print(f"Hello there {name}")
+
+print("string".startswith('st'))
+print("string".endswith('ing'))
