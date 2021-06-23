@@ -61,8 +61,21 @@ class Hangman extends Rules {
   }
 }
 
-const h1 = new Hangman("kitten puppy", 11);
-
 window.addEventListener("keypress", (event) => {
   console.log(h1.makeGuess(event.key));
 });
+
+const getPuzzle = (cb) => {
+  fetch("https://puzzle.mead.io/puzzle?wordCount=2")
+    .then((res) => res.json())
+    .then((res) => {
+      cb(res.puzzle);
+    })
+    .catch((err) => console.log(err));
+};
+
+getPuzzle((puzzle) => {
+  console.log(puzzle);
+});
+
+const h1 = new Hangman(getPuzzle(), 15);

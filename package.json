@@ -1,6 +1,7 @@
 {
   "name": "pythontuts",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "hangman.js",
   "scripts": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/nimaester/pythonTuts/issues"
   },
-  "homepage": "https://github.com/nimaester/pythonTuts#readme"
+  "homepage": "https://github.com/nimaester/pythonTuts#readme",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
 }
