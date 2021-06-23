@@ -34,14 +34,26 @@ class Expert extends Professional {
     this.expYears = expYears;
   }
 
-  getBio() {
+  get getBio() {
     return `${this.name} is a ${this.sex} ${this.age} years old, who works as a ${this.job} for ${this.expYears} years`;
+  }
+
+  set getBio(info) {
+    let splitInfo = info.split(" ");
+    this.name = splitInfo[0];
+    this.age = splitInfo[1];
+    this.sex = splitInfo[2];
+    this.job = splitInfo[3];
+    this.expYears = splitInfo[4];
   }
 }
 
 const joe = new Student("Joe Harris", 39, "Male", "Business", 4.0);
+joe.name = "Joe Johnson";
 const mary = new Professional("Mary J Blidge", 44, "Female", "Artist");
 const billy = new Expert("Billy d Kid", 2, "Male", "Robber", 14);
 console.log(joe.getBio());
 console.log(mary.getBio());
-console.log(billy.getBio());
+console.log(billy.getBio);
+billy.getBio = "James 31 Male Police 15";
+console.log(billy);

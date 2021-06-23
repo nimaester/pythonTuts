@@ -37,6 +37,7 @@ class Hangman extends Rules {
 
   makeGuess(char) {
     let letter = char.toLowerCase();
+
     if (this.status === "finshed") {
       return "You ran out of guesses";
     }
@@ -47,8 +48,6 @@ class Hangman extends Rules {
 
     if (this.lettersUsed.includes(letter) && this.status === "playing") {
       return "Use another letter";
-    } else if (this.status === "solved") {
-      return `You solved it! The word is "${guess}"`;
     } else {
       this.lettersUsed.push(letter);
       this.guesses -= 1;
@@ -62,7 +61,7 @@ class Hangman extends Rules {
   }
 }
 
-const h1 = new Hangman("kitten", 11);
+const h1 = new Hangman("kitten puppy", 11);
 
 window.addEventListener("keypress", (event) => {
   console.log(h1.makeGuess(event.key));
