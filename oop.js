@@ -1,55 +1,47 @@
-class Rules {
-  constructor() {
-    this.rules = "THIS IS THE RULES";
+class Human {
+  constructor(name, age, sex) {
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
   }
-
-  trial() {
-    return this.rules;
-  }
-}
-
-class Hangman extends Rules {
-  constructor(word, guesses) {
-    super();
-    this.word = word.toLowerCase().split("");
-    this.guesses = guesses;
-    this.lettersUsed = [];
-  }
-
-  getPuzzle() {
-    let guess = "";
-    this.word.forEach((letter) => {
-      if (this.lettersUsed.includes(letter) || letter === " ") {
-        guess += letter;
-      } else {
-        guess += "*";
-      }
-    });
-
-    if (guess === this.word.join("")) {
-      return `You solved it! The word is "${guess}"`;
-    } else {
-      return guess;
-    }
-  }
-
-  makeGuess(char) {
-    let letter = char.toLowerCase();
-    if (this.lettersUsed.includes(letter)) {
-      return "Use another letter";
-    } else {
-      this.lettersUsed.push(letter);
-      this.guesses -= 1;
-      if (this.guesses < 0) {
-        return "You ran out of guesses";
-      }
-      return this.getPuzzle();
-    }
+  getBio() {
+    return `Hi my name is ${this.name}, ${this.age} years old ${this.sex}`;
   }
 }
 
-const h1 = new Hangman("kitten", 10);
+class Student extends Human {
+  constructor(name, age, sex, major, gpa) {
+    super(name, age, sex);
+    this.major = major;
+    this.gpa = gpa;
+  }
+}
 
-window.addEventListener("keypress", (event) => {
-  console.log(h1.makeGuess(event.key));
-});
+class Professional extends Human {
+  constructor(name, age, sex, job) {
+    super(name, age, sex);
+    this.job = job;
+  }
+
+  getBio() {
+    return `${this.name} is a ${this.age} year old ${this.sex} who is a ${this.job} `;
+  }
+}
+
+class Expert extends Professional {
+  constructor(name, age, sex, job, expYears) {
+    super(name, age, sex, job);
+    this.expYears = expYears;
+  }
+
+  getBio() {
+    return `${this.name} is a ${this.sex} ${this.age} years old, who works as a ${this.job} for ${this.expYears} years`;
+  }
+}
+
+const joe = new Student("Joe Harris", 39, "Male", "Business", 4.0);
+const mary = new Professional("Mary J Blidge", 44, "Female", "Artist");
+const billy = new Expert("Billy d Kid", 2, "Male", "Robber", 14);
+console.log(joe.getBio());
+console.log(mary.getBio());
+console.log(billy.getBio());
